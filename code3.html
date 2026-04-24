@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register | NRFSS National Infrastructure</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed-variant": "#005320",
+            "tertiary-container": "#ff8b7c",
+            "surface-container": "#1a221a",
+            "primary-fixed-dim": "#4ae176",
+            "on-surface-variant": "#bccbb9",
+            "on-tertiary-fixed-variant": "#7f2a21",
+            "surface-bright": "#333b33",
+            "on-error-container": "#ffdad6",
+            "on-tertiary": "#60130d",
+            "error": "#ffb4ab",
+            "outline": "#869585",
+            "on-secondary-fixed": "#002109",
+            "tertiary": "#ffb5ab",
+            "tertiary-fixed-dim": "#ffb4a9",
+            "primary": "#4be277",
+            "secondary": "#62df7d",
+            "on-primary-fixed-variant": "#005321",
+            "background": "#0e150e",
+            "primary-container": "#22c55e",
+            "surface": "#0e150e",
+            "surface-dim": "#0e150e",
+            "surface-container-low": "#161d16",
+            "on-primary-container": "#004b1e",
+            "tertiary-fixed": "#ffdad5",
+            "on-primary-fixed": "#002109",
+            "secondary-fixed-dim": "#62df7d",
+            "on-background": "#dce5d9",
+            "inverse-primary": "#006e2f",
+            "on-primary": "#003915",
+            "surface-variant": "#2f372e",
+            "surface-container-high": "#242c24",
+            "surface-container-lowest": "#091009",
+            "primary-fixed": "#6bff8f",
+            "secondary-container": "#1ca64d",
+            "inverse-on-surface": "#2a322a",
+            "inverse-surface": "#dce5d9",
+            "outline-variant": "#3d4a3d",
+            "on-surface": "#dce5d9",
+            "on-error": "#690005",
+            "on-secondary-container": "#003111",
+            "surface-container-highest": "#2f372e",
+            "on-tertiary-fixed": "#410001",
+            "surface-tint": "#4ae176",
+            "on-tertiary-container": "#76231b",
+            "error-container": "#93000a",
+            "on-secondary": "#003914",
+            "secondary-fixed": "#7ffc97"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "lg": "40px",
+            "xl": "64px",
+            "xs": "4px",
+            "md": "24px",
+            "base": "8px",
+            "margin": "32px",
+            "sm": "12px",
+            "gutter": "24px"
+          },
+          "fontFamily": {
+            "h2": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "display": ["Inter"],
+            "button": ["Inter"],
+            "body-lg": ["Inter"],
+            "h1": ["Inter"]
+          },
+          "fontSize": {
+            "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+            "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "button": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "h1": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>body {
+    background-color: #0a0f0a;
+    background-image: radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.05) 0%, transparent 50%), url(https://lh3.googleusercontent.com/aida-public/AB6AXuBCBN9peUZ-_Re-YKjhfNKjEsBwjvXMzx415QfF8psxqmzXob-iUUjD49z9FBLYvtSL-bUc3U2KxnqAm1Of0oW0cjn8QAST3UB2mOXfBDvzXminkMJh5c4mfS6RwRBXL58ikoOS-jnlN_9VfxLq1dB4EREK0i2wLkr8XtRvbb5_lP1uLT5pG6WCSy0AnAFfAUWMc8RUtdnzefpyJk-_eq2t37_xn9eMNMGg9K3YbSr-FmhUC8UAegtIetiuR0w8s0BnFx5PznZYd-Y)
+    }
+.glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10px);
+    border: 1px solid #1e3a1e;
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.1)
+    }
+.input-field {
+    background-color: #0d1a0d;
+    border: 1px solid #1a2e1a;
+    transition: all 0.3s ease
+    }
+.input-field:focus {
+    border-color: #22c55e;
+    box-shadow: inset 0 0 8px rgba(34, 197, 94, 0.2);
+    outline: none
+    }
+.primary-btn {
+    background: linear-gradient(to bottom right, #16a34a, #22c55e);
+    transition: all 0.2s ease
+    }
+.primary-btn:hover {
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+    transform: scale(1.02)
+    }
+.primary-btn:active {
+    transform: scale(0.98)
+    }</style>
+</head>
+<body class="min-h-screen flex items-center justify-center py-12 px-4 font-body-md text-on-background selection:bg-primary selection:text-on-primary">
+<!-- Registration Container -->
+<main class="w-full max-w-[480px]">
+<div class="glass-card rounded-xl p-md md:p-lg flex flex-col items-center">
+<!-- Brand Identity -->
+<div class="mb-base flex flex-col items-center gap-2">
+<div class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center shadow-[0_0_20px_rgba(34,197,94,0.3)]">
+<span class="material-symbols-outlined text-on-primary-container text-3xl" data-weight="fill">eco</span>
+</div>
+<span class="font-h2 text-primary tracking-tighter">NRFSS</span>
+</div>
+<header class="text-center mb-lg">
+<h1 class="font-h1 text-on-surface mb-xs">Create Your Account</h1>
+<p class="font-body-md text-on-surface-variant opacity-70">Join the national ecological infrastructure.</p>
+</header>
+<!-- Registration Form -->
+<form class="w-full space-y-4">
+<!-- Row 1: Full Name -->
+<div class="space-y-1">
+<label class="font-label-sm text-primary-fixed-dim uppercase tracking-widest ml-1">Full Name</label>
+<input class="input-field w-full h-12 px-4 rounded-lg text-on-surface placeholder:text-outline-variant" placeholder="Enter your full name" type="text"/>
+</div>
+<!-- Row 2: CNIC & Mobile -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="font-label-sm text-primary-fixed-dim uppercase tracking-widest ml-1">CNIC</label>
+<input class="input-field w-full h-12 px-4 rounded-lg text-on-surface placeholder:text-outline-variant" placeholder="00000-0000000-0" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-sm text-primary-fixed-dim uppercase tracking-widest ml-1">Mobile</label>
+<input class="input-field w-full h-12 px-4 rounded-lg text-on-surface placeholder:text-outline-variant" placeholder="+92 3XX XXXXXXX" type="tel"/>
+</div>
+</div>
+<!-- Row 3: Email -->
+<div class="space-y-1">
+<label class="font-label-sm text-primary-fixed-dim uppercase tracking-widest ml-1">Email Address</label>
+<input class="input-field w-full h-12 px-4 rounded-lg text-on-surface placeholder:text-outline-variant" placeholder="name@domain.com" type="email"/>
+</div>
+<!-- Row 4: Age, City, Profession -->
+<div class="grid grid-cols-3 gap-2">
+<div class="space-y-1">
+<label class="font-label-sm text-primary-fixed-dim uppercase tracking-widest ml-1">Age</label>
+<input class="input-field w-full h-12 px-4 rounded-lg text-on-surface placeholder:text-outline-variant" placeholder="25" type="number"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-sm text-primary-fixed-dim uppercase tracking-widest ml-1">City</label>
+<input class="input-field w-full h-12 px-4 rounded-lg text-on-surface placeholder:text-outline-variant" placeholder="Lahore" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-sm text-primary-fixed-dim uppercase tracking-widest ml-1">Profession</label>
+<input class="input-field w-full h-12 px-4 rounded-lg text-on-surface placeholder:text-outline-variant" placeholder="Engineer" type="text"/>
+</div>
+</div>
+<!-- Row 5: Passwords -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="font-label-sm text-primary-fixed-dim uppercase tracking-widest ml-1">Password</label>
+<input class="input-field w-full h-12 px-4 rounded-lg text-on-surface placeholder:text-outline-variant" placeholder="••••••••" type="password"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-sm text-primary-fixed-dim uppercase tracking-widest ml-1">Confirm</label>
+<input class="input-field w-full h-12 px-4 rounded-lg text-on-surface placeholder:text-outline-variant" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Toggle Section: Vehicle Owner -->
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 mt-base">
+<div class="flex items-center justify-between mb-4">
+<span class="font-body-md font-semibold text-on-surface">I am a Vehicle Owner</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Conditional Content -->
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="font-label-sm text-primary-fixed-dim uppercase tracking-widest ml-1">Vehicle Type</label>
+<select class="input-field w-full h-10 px-3 rounded-lg text-on-surface text-sm">
+<option>Sedan</option>
+<option>SUV</option>
+<option>Hatchback</option>
+<option>Electric</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-sm text-primary-fixed-dim uppercase tracking-widest ml-1">Fuel efficiency</label>
+<input class="input-field w-full h-10 px-3 rounded-lg text-on-surface text-sm placeholder:text-outline-variant" placeholder="Km/L" type="text"/>
+</div>
+</div>
+</div>
+<!-- Terms and Conditions -->
+<div class="flex items-start gap-3 py-2">
+<div class="flex items-center h-5">
+<input class="w-4 h-4 text-primary bg-surface-container border-outline rounded focus:ring-primary focus:ring-offset-surface-dim" type="checkbox"/>
+</div>
+<div class="text-sm">
+<label class="font-body-md text-on-surface-variant opacity-80">
+              I agree to the <a class="text-primary hover:underline" href="#">Terms of Service</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>.
+            </label>
+</div>
+</div>
+<!-- CTA Action -->
+<button class="primary-btn w-full h-14 rounded-lg font-button text-on-primary text-base uppercase tracking-widest mt-4" type="submit">
+          Register Now
+        </button>
+<!-- Footer Link -->
+<div class="text-center pt-md">
+<p class="font-body-md text-on-surface-variant">
+            Already have an account? 
+            <a class="text-primary font-bold hover:underline ml-1" href="#">Login</a>
+</p>
+</div>
+</form>
+</div>
+<!-- Security/Legal Footer -->
+<div class="mt-md text-center">
+<p class="font-label-sm text-outline-variant opacity-50 uppercase tracking-tighter">
+        © 2024 NRFSS National Infrastructure. High-Security Environment.
+      </p>
+</div>
+</main>
+<!-- Decoration Background Elements -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+<div class="absolute top-[10%] left-[10%] w-[30vw] h-[30vw] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute bottom-[10%] right-[10%] w-[40vw] h-[40vw] rounded-full bg-primary/5 blur-[150px]"></div>
+</div>
+</body></html>
