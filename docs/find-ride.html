@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Find a Ride | NRFSS Infrastructure</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#005320",
+                        "tertiary-container": "#ff8b7c",
+                        "surface-container": "#1a221a",
+                        "primary-fixed-dim": "#4ae176",
+                        "on-surface-variant": "#bccbb9",
+                        "on-tertiary-fixed-variant": "#7f2a21",
+                        "surface-bright": "#333b33",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#60130d",
+                        "error": "#ffb4ab",
+                        "outline": "#869585",
+                        "on-secondary-fixed": "#002109",
+                        "tertiary": "#ffb5ab",
+                        "tertiary-fixed-dim": "#ffb4a9",
+                        "primary": "#4be277",
+                        "secondary": "#62df7d",
+                        "on-primary-fixed-variant": "#005321",
+                        "background": "#0e150e",
+                        "primary-container": "#22c55e",
+                        "surface": "#0e150e",
+                        "surface-dim": "#0e150e",
+                        "surface-container-low": "#161d16",
+                        "on-primary-container": "#004b1e",
+                        "tertiary-fixed": "#ffdad5",
+                        "on-primary-fixed": "#002109",
+                        "secondary-fixed-dim": "#62df7d",
+                        "on-background": "#dce5d9",
+                        "inverse-primary": "#006e2f",
+                        "on-primary": "#003915",
+                        "surface-variant": "#2f372e",
+                        "surface-container-high": "#242c24",
+                        "surface-container-lowest": "#091009",
+                        "primary-fixed": "#6bff8f",
+                        "secondary-container": "#1ca64d",
+                        "inverse-on-surface": "#2a322a",
+                        "inverse-surface": "#dce5d9",
+                        "outline-variant": "#3d4a3d",
+                        "on-surface": "#dce5d9",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#003111",
+                        "surface-container-highest": "#2f372e",
+                        "on-tertiary-fixed": "#410001",
+                        "surface-tint": "#4ae176",
+                        "on-tertiary-container": "#76231b",
+                        "error-container": "#93000a",
+                        "on-secondary": "#003914",
+                        "secondary-fixed": "#7ffc97"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "xl": "64px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "base": "8px",
+                        "margin": "32px",
+                        "sm": "12px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display": ["Inter"],
+                        "button": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "h1": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "button": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>.glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10px);
+    border: 1px solid #1e3a1e
+    }
+.grain-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCM8nMpUrUWuDLOI7JoHf6qQY5i5XUcaLn6JAuCMUD_5JFhhi8IGAPGhSnVObtdb1Z-69jkq3ii6fPEVZQApS0-6rpao9chAaUIkgBBQ0l31LEXfxl2Blein6FvbvVbdib5yhzAcm2Ut2bP1ixfEF6q3n9qLE81jW6L9VpL1KTKq5Z_LzGl82Fnv8ehLfGSqN7oHcGJWNtnn-eO-7jmd-NFS3YAF9xyG-iuhahiAqgdcPYdMUa0lrlh0RBDmcAOtN7GCW99udx1mRk);
+    opacity: 0.05;
+    pointer-events: none
+    }
+.glow-hover:hover {
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.2)
+    }</style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden min-h-screen">
+<div class="grain-overlay fixed inset-0 z-[-1]"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b bg-[#0a0f0a]/80 backdrop-blur-[10px] border-[#1e3a1e] shadow-[0_0_15px_rgba(34,197,94,0.1)] flex justify-between items-center px-8 h-20">
+<div class="text-xl font-black text-emerald-500 flex items-center gap-2 font-inter uppercase tracking-wider">
+<span class="material-symbols-outlined" data-weight="fill">eco</span>
+            NRFSS
+        </div>
+<div class="hidden md:flex gap-margin items-center">
+<a class="font-inter uppercase bold tracking-wider text-emerald-500/60 hover:text-emerald-400 hover:scale-105 transition-all" href="#">Home</a>
+<a class="font-inter uppercase bold tracking-wider text-emerald-500/60 hover:text-emerald-400 hover:scale-105 transition-all" href="#">How It Works</a>
+<a class="font-inter uppercase bold tracking-wider text-emerald-500/60 hover:text-emerald-400 hover:scale-105 transition-all" href="#">Features</a>
+<a class="font-inter uppercase bold tracking-wider text-emerald-500/60 hover:text-emerald-400 hover:scale-105 transition-all" href="#">Safety</a>
+</div>
+<div class="flex gap-4 items-center">
+<button class="px-6 py-2 rounded-lg font-button uppercase text-emerald-500 hover:text-emerald-400 active:scale-95 transition-all">Login</button>
+<button class="px-6 py-2 rounded-lg bg-gradient-to-r from-[#16a34a] to-[#22c55e] font-button uppercase text-on-primary glow-hover active:scale-95 transition-all">Register</button>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 border-r bg-[#0a0f0a]/90 backdrop-blur-[10px] border-[#1e3a1e] shadow-xl flex flex-col pt-24 py-8 space-y-2 z-40 hidden md:flex">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-emerald-500/30 overflow-hidden">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a professional male driver in a clean green shirt with a warm smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqsVpmRxAQUoEMwpSyabQ3EGYtfhIEXD2hcQjioS9KpdgSavUbpRKgaBVQ2YlT_3U1ufvgyUyAYhJJgq-75knwywCY5lhTv2jn5OS1c4PcVqMe6y5vN5xmsaQh6n7_Lv1V1BDlPfwkNMJuIHWFRo2k5M7hvMKNZKpzWVfaKt2I7fS61GlNEkMSDWvqurtGNVEiGw4tEgPbBoONkm6h4xzCMHC9zeqIv13gVh7J8Usac6CnaRekHkEd3rs1qllmPrggn9UNtqjNkSQ"/>
+</div>
+<div>
+<div class="font-inter text-sm font-bold text-emerald-400">System Operator</div>
+<div class="font-inter text-xs text-emerald-500/60">Verified Ecological Driver</div>
+</div>
+</div>
+</div>
+<nav class="flex-1">
+<a class="flex items-center gap-3 text-emerald-500/60 px-4 py-3 hover:bg-emerald-500/5 hover:text-emerald-300 transition-colors font-inter text-sm font-medium active:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 text-emerald-500/60 px-4 py-3 hover:bg-emerald-500/5 hover:text-emerald-300 transition-colors font-inter text-sm font-medium active:translate-x-1" href="#">
+<span class="material-symbols-outlined">add_circle</span> Post a Ride
+            </a>
+<a class="flex items-center gap-3 bg-emerald-500/10 text-emerald-400 border-l-4 border-emerald-500 px-4 py-3 font-inter text-sm font-medium" href="#">
+<span class="material-symbols-outlined">search</span> Find a Ride
+            </a>
+<a class="flex items-center gap-3 text-emerald-500/60 px-4 py-3 hover:bg-emerald-500/5 hover:text-emerald-300 transition-colors font-inter text-sm font-medium active:translate-x-1" href="#">
+<span class="material-symbols-outlined">directions_car</span> My Rides
+            </a>
+<a class="flex items-center gap-3 text-emerald-500/60 px-4 py-3 hover:bg-emerald-500/5 hover:text-emerald-300 transition-colors font-inter text-sm font-medium active:translate-x-1" href="#">
+<span class="material-symbols-outlined">local_gas_station</span> Fuel Calculator
+            </a>
+<a class="flex items-center gap-3 text-emerald-500/60 px-4 py-3 hover:bg-emerald-500/5 hover:text-emerald-300 transition-colors font-inter text-sm font-medium active:translate-x-1" href="#">
+<span class="material-symbols-outlined">notifications</span> Notifications
+            </a>
+<a class="flex items-center gap-3 text-emerald-500/60 px-4 py-3 hover:bg-emerald-500/5 hover:text-emerald-300 transition-colors font-inter text-sm font-medium active:translate-x-1" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+</nav>
+<div class="mt-auto px-4">
+<button class="flex items-center gap-3 text-emerald-800 w-full px-4 py-3 hover:text-emerald-400 transition-colors font-inter text-xs tracking-tight">
+<span class="material-symbols-outlined">logout</span> Logout
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:pl-64 pt-20 pb-12 px-margin">
+<header class="py-lg max-w-7xl mx-auto">
+<h1 class="font-h1 text-h1 text-on-background mb-4">Find a Ecological Transit</h1>
+<p class="text-on-surface-variant font-body-lg max-w-2xl">Connect with verified drivers optimizing logistical flows for a greener future. Select your route and parameters below.</p>
+</header>
+<!-- Search Bar Section -->
+<section class="max-w-7xl mx-auto mb-lg">
+<div class="glass-card p-6 rounded-xl flex flex-wrap gap-gutter items-end">
+<div class="flex-1 min-w-[200px]">
+<label class="block text-label-sm text-emerald-500 mb-2 uppercase tracking-widest">From</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-emerald-500/60">location_on</span>
+<input class="w-full bg-[#0d1a0d] border border-[#1a2e1a] rounded-lg pl-10 pr-4 py-3 text-on-background focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all" placeholder="Departure City" type="text"/>
+</div>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block text-label-sm text-emerald-500 mb-2 uppercase tracking-widest">To</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-emerald-500/60">map</span>
+<input class="w-full bg-[#0d1a0d] border border-[#1a2e1a] rounded-lg pl-10 pr-4 py-3 text-on-background focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all" placeholder="Destination City" type="text"/>
+</div>
+</div>
+<div class="w-48">
+<label class="block text-label-sm text-emerald-500 mb-2 uppercase tracking-widest">Date</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-emerald-500/60">calendar_today</span>
+<input class="w-full bg-[#0d1a0d] border border-[#1a2e1a] rounded-lg pl-10 pr-4 py-3 text-on-background focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all" type="date"/>
+</div>
+</div>
+<div class="w-40">
+<label class="block text-label-sm text-emerald-500 mb-2 uppercase tracking-widest">Passengers</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-emerald-500/60">group</span>
+<select class="w-full bg-[#0d1a0d] border border-[#1a2e1a] rounded-lg pl-10 pr-4 py-3 text-on-background focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all appearance-none">
+<option>1 Person</option>
+<option>2 People</option>
+<option>3 People</option>
+<option>4+ People</option>
+</select>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-lg font-button uppercase glow-hover active:scale-95 transition-all">Search</button>
+</div>
+</section>
+<!-- Filters -->
+<section class="max-w-7xl mx-auto mb-lg">
+<div class="flex flex-wrap items-center gap-sm">
+<span class="text-label-sm text-emerald-500/60 uppercase mr-4">Refine Search:</span>
+<button class="px-4 py-2 rounded-full border border-primary bg-primary/10 text-primary font-label-sm hover:bg-primary/20 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">directions_bike</span> Bike
+                </button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm hover:border-primary hover:text-primary transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">directions_car</span> Car
+                </button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm hover:border-primary hover:text-primary transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">eco</span> CNG
+                </button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm hover:border-primary hover:text-primary transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">local_gas_station</span> Petrol
+                </button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm hover:border-primary hover:text-primary transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">schedule</span> Time
+                </button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm hover:border-primary hover:text-primary transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-weight="fill">verified</span> Verified Only
+                </button>
+</div>
+</section>
+<!-- Results Grid -->
+<section class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Card 1 -->
+<div class="glass-card rounded-xl p-md flex flex-col md:flex-row gap-gutter hover:border-primary/50 transition-all group">
+<div class="flex-1">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Driver Avatar" class="w-12 h-12 rounded-full object-cover" data-alt="circular profile photo of a smiling professional man with tech glasses, bright lighting, green bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARopHF-6jTAlO_c5uwaRl_ucfrviF_KW6RNBHgjMI6A_gM08eLMMtoyd7RF9djYi3sw5_mgXEnXPHweG8Xch8zhvEHhASRUsG7XXPtEZ9UAq-sYO9t3Z88tZ8_i4V2ac9_-CEHRaP_L0-K9MSVvTrcTMqzYAAWAlA7m9lNBbu4KYEr-zXShUYOqeJG0AGRXPfRTJEi0exNPbA3L9VkfE8tipKXIrw0R-19N1MuuZYG4C_9Bkqdw48qV66gmpOVj-CwkJlm-4fHizQ"/>
+<span class="material-symbols-outlined absolute -bottom-1 -right-1 text-primary bg-surface-container rounded-full text-lg p-0.5" data-weight="fill">verified</span>
+</div>
+<div>
+<h3 class="font-h2 text-body-lg text-on-background">Marcus Thorne</h3>
+<p class="text-label-sm text-emerald-500/60 uppercase">Platinum Tier Driver</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-primary text-h1 font-black">$24.00</div>
+<div class="text-label-sm text-emerald-500/60">per seat</div>
+</div>
+</div>
+<div class="space-y-4 border-l-2 border-dashed border-[#1e3a1e] ml-6 pl-6 relative mb-6">
+<div class="relative">
+<span class="absolute -left-[31px] top-1 w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+<div class="text-on-background font-medium">Downtown Sector 4</div>
+<div class="text-label-sm text-emerald-500/60">08:30 AM Departure</div>
+</div>
+<div class="relative">
+<span class="absolute -left-[31px] top-1 w-2.5 h-2.5 rounded-full bg-primary-fixed-dim"></span>
+<div class="text-on-background font-medium">North Hub Terminals</div>
+<div class="text-label-sm text-emerald-500/60">Est. 09:45 AM Arrival</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 items-center mb-6">
+<div class="bg-surface-container-low px-3 py-1.5 rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">airline_seat_recline_normal</span>
+<span class="text-label-sm">2 Seats left</span>
+</div>
+<div class="bg-surface-container-low px-3 py-1.5 rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">ev_station</span>
+<span class="text-label-sm">Electric Sedan</span>
+</div>
+<div class="bg-primary/10 px-3 py-1.5 rounded border border-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">analytics</span>
+<span class="text-label-sm font-bold text-primary">98% Match</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 py-3 border border-outline-variant text-on-surface-variant rounded-lg font-button uppercase hover:border-primary hover:text-primary transition-all">View Details</button>
+<button class="flex-1 py-3 bg-gradient-to-r from-[#16a34a] to-[#22c55e] text-on-primary rounded-lg font-button uppercase glow-hover active:scale-95 transition-all">Request Ride</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card rounded-xl p-md flex flex-col md:flex-row gap-gutter hover:border-primary/50 transition-all group">
+<div class="flex-1">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Driver Avatar" class="w-12 h-12 rounded-full object-cover" data-alt="professional profile photo of a woman in business attire, confident expression, soft natural lighting, high-end office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqhRvOInEdNp_j7vgqOX6RyfZbAJOolcHOSjD2aCOkoSQjiYt0Hm5avgixrtiA_Z2BacA1h5SILEMrZmLYmhEek3-cqeQoktWHux0958JQRTPRSmCxu9sk_dTX0PoSrj4PM-dOOgMFoVb0-S3M9QoLMJ50A0uZES2joLP4BkjPFuaarENIZB4dofszkM-OnstOfPGLnTW_24ospmoIslQPT2jPkTEsP3TeobTBQBzIvlIG7q00jdhgesM_cLlp2ZfGuWjDi9FR_Xg"/>
+<span class="material-symbols-outlined absolute -bottom-1 -right-1 text-primary bg-surface-container rounded-full text-lg p-0.5" data-weight="fill">verified</span>
+</div>
+<div>
+<h3 class="font-h2 text-body-lg text-on-background">Elena Rodriguez</h3>
+<p class="text-label-sm text-emerald-500/60 uppercase">Green-Path Certified</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-primary text-h1 font-black">$18.50</div>
+<div class="text-label-sm text-emerald-500/60">per seat</div>
+</div>
+</div>
+<div class="space-y-4 border-l-2 border-dashed border-[#1e3a1e] ml-6 pl-6 relative mb-6">
+<div class="relative">
+<span class="absolute -left-[31px] top-1 w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+<div class="text-on-background font-medium">East Gate Plaza</div>
+<div class="text-label-sm text-emerald-500/60">09:15 AM Departure</div>
+</div>
+<div class="relative">
+<span class="absolute -left-[31px] top-1 w-2.5 h-2.5 rounded-full bg-primary-fixed-dim"></span>
+<div class="text-on-background font-medium">Central Station</div>
+<div class="text-label-sm text-emerald-500/60">Est. 10:00 AM Arrival</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 items-center mb-6">
+<div class="bg-surface-container-low px-3 py-1.5 rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">airline_seat_recline_normal</span>
+<span class="text-label-sm">1 Seat left</span>
+</div>
+<div class="bg-surface-container-low px-3 py-1.5 rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">eco</span>
+<span class="text-label-sm">Hybrid SUV</span>
+</div>
+<div class="bg-primary/10 px-3 py-1.5 rounded border border-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">analytics</span>
+<span class="text-label-sm font-bold text-primary">92% Match</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 py-3 border border-outline-variant text-on-surface-variant rounded-lg font-button uppercase hover:border-primary hover:text-primary transition-all">View Details</button>
+<button class="flex-1 py-3 bg-gradient-to-r from-[#16a34a] to-[#22c55e] text-on-primary rounded-lg font-button uppercase glow-hover active:scale-95 transition-all">Request Ride</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card rounded-xl p-md flex flex-col md:flex-row gap-gutter hover:border-primary/50 transition-all group">
+<div class="flex-1">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Driver Avatar" class="w-12 h-12 rounded-full object-cover" data-alt="headshot of a cheerful man in casual attire, outdoor park setting with soft green highlights, professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhY1IAU6_JtSUST2qrbLlSOmurw7s17SZxKQnBBayhyr0m1pry4o-l7oPRCbAfAD1JFPmHBe7jk8faOyo5bI2Vif2ldUw3_GEhcxmVRWEPXKqe69v3EBCGSuI9GLUUTFZwwqQiP6L0010pVWrl1011gHnr-cARyqJtITZUQRVJxvh7uaXuGGECbzuYmLU6Mmj4pjVcNKZdtt7XwuKYvqIRpFly-ZKqw2HhzckBCJVYPu0mUedKWXbvVFrj0NKsmceyHoWluoerAvs"/>
+<span class="material-symbols-outlined absolute -bottom-1 -right-1 text-primary bg-surface-container rounded-full text-lg p-0.5" data-weight="fill">verified</span>
+</div>
+<div>
+<h3 class="font-h2 text-body-lg text-on-background">Samuel Kent</h3>
+<p class="text-label-sm text-emerald-500/60 uppercase">System Operator</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-primary text-h1 font-black">$32.00</div>
+<div class="text-label-sm text-emerald-500/60">per seat</div>
+</div>
+</div>
+<div class="space-y-4 border-l-2 border-dashed border-[#1e3a1e] ml-6 pl-6 relative mb-6">
+<div class="relative">
+<span class="absolute -left-[31px] top-1 w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+<div class="text-on-background font-medium">South Industrial Zone</div>
+<div class="text-label-sm text-emerald-500/60">07:45 AM Departure</div>
+</div>
+<div class="relative">
+<span class="absolute -left-[31px] top-1 w-2.5 h-2.5 rounded-full bg-primary-fixed-dim"></span>
+<div class="text-on-background font-medium">Corporate City Center</div>
+<div class="text-label-sm text-emerald-500/60">Est. 09:15 AM Arrival</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 items-center mb-6">
+<div class="bg-surface-container-low px-3 py-1.5 rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">airline_seat_recline_normal</span>
+<span class="text-label-sm">3 Seats left</span>
+</div>
+<div class="bg-surface-container-low px-3 py-1.5 rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">directions_car</span>
+<span class="text-label-sm">Luxury CNG Sedan</span>
+</div>
+<div class="bg-primary/10 px-3 py-1.5 rounded border border-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">analytics</span>
+<span class="text-label-sm font-bold text-primary">85% Match</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 py-3 border border-outline-variant text-on-surface-variant rounded-lg font-button uppercase hover:border-primary hover:text-primary transition-all">View Details</button>
+<button class="flex-1 py-3 bg-gradient-to-r from-[#16a34a] to-[#22c55e] text-on-primary rounded-lg font-button uppercase glow-hover active:scale-95 transition-all">Request Ride</button>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-card rounded-xl p-md flex flex-col md:flex-row gap-gutter hover:border-primary/50 transition-all group">
+<div class="flex-1">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Driver Avatar" class="w-12 h-12 rounded-full object-cover" data-alt="professional portrait of a young woman with a smart appearance, minimalist clean aesthetic, cool green background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuXPB6oapAwYcsGdUfumZwgs2S5NrPA_Sy4RPG_LYjwZX6kRTK0EYFlgZYbotNTFlULuUBl_bEc-zxBuLyt8XWCMyX4EK59zJ2PvRPf4Iz56XkOlMuIjB6miCsZT6uX4au6IeSRvB2OCELYf2New7Vq90TwN-Pb0z0dNT-4JoS79DIQESKvVVofUU2p0xzYzPPVwJORPvytlLaKfYm1spQ4pKdNaMQqPmqLyVdi41MuXoI14FadUxQ80k19V47bQJfceL_AuP59xY"/>
+<span class="material-symbols-outlined absolute -bottom-1 -right-1 text-primary bg-surface-container rounded-full text-lg p-0.5" data-weight="fill">verified</span>
+</div>
+<div>
+<h3 class="font-h2 text-body-lg text-on-background">Maya Singh</h3>
+<p class="text-label-sm text-emerald-500/60 uppercase">Verified Eco-Driver</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-primary text-h1 font-black">$12.00</div>
+<div class="text-label-sm text-emerald-500/60">per seat</div>
+</div>
+</div>
+<div class="space-y-4 border-l-2 border-dashed border-[#1e3a1e] ml-6 pl-6 relative mb-6">
+<div class="relative">
+<span class="absolute -left-[31px] top-1 w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+<div class="text-on-background font-medium">Western Suburbs</div>
+<div class="text-label-sm text-emerald-500/60">08:00 AM Departure</div>
+</div>
+<div class="relative">
+<span class="absolute -left-[31px] top-1 w-2.5 h-2.5 rounded-full bg-primary-fixed-dim"></span>
+<div class="text-on-background font-medium">South Gate Mall</div>
+<div class="text-label-sm text-emerald-500/60">Est. 08:35 AM Arrival</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 items-center mb-6">
+<div class="bg-surface-container-low px-3 py-1.5 rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">airline_seat_recline_normal</span>
+<span class="text-label-sm">1 Seat left</span>
+</div>
+<div class="bg-surface-container-low px-3 py-1.5 rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">directions_bike</span>
+<span class="text-label-sm">Electric Scooter</span>
+</div>
+<div class="bg-primary/10 px-3 py-1.5 rounded border border-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">analytics</span>
+<span class="text-label-sm font-bold text-primary">99% Match</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 py-3 border border-outline-variant text-on-surface-variant rounded-lg font-button uppercase hover:border-primary hover:text-primary transition-all">View Details</button>
+<button class="flex-1 py-3 bg-gradient-to-r from-[#16a34a] to-[#22c55e] text-on-primary rounded-lg font-button uppercase glow-hover active:scale-95 transition-all">Request Ride</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Pagination / Load More -->
+<div class="max-w-7xl mx-auto flex justify-center mt-xl">
+<button class="px-12 py-4 border border-primary text-primary rounded-lg font-button uppercase glow-hover transition-all">Load More Logistics</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#1e3a1e] bg-[#0a0f0a] mt-xl">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-12 py-16 w-full max-w-7xl mx-auto">
+<div>
+<div class="text-emerald-600 font-bold text-xl mb-4 font-inter">NRFSS National Infrastructure</div>
+<p class="text-emerald-800 text-xs font-inter tracking-tight leading-relaxed">
+                    Optimizing national transit through ecological responsibility. Our systems manage over 1.2 million shared transit routes daily with a 99.8% precision rate.
+                </p>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="text-emerald-500 font-bold uppercase text-xs tracking-widest mb-2">Legal &amp; Support</h4>
+<a class="text-emerald-800 font-inter text-xs tracking-tight hover:text-emerald-400 transition-colors" href="#">Privacy Policy</a>
+<a class="text-emerald-800 font-inter text-xs tracking-tight hover:text-emerald-400 transition-colors" href="#">Terms of Service</a>
+<a class="text-emerald-800 font-inter text-xs tracking-tight hover:text-emerald-400 transition-colors" href="#">Contact Support</a>
+<a class="text-emerald-800 font-inter text-xs tracking-tight hover:text-emerald-400 transition-colors underline" href="#">Network Status</a>
+</div>
+<div>
+<h4 class="text-emerald-500 font-bold uppercase text-xs tracking-widest mb-2">Certifications</h4>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-emerald-800">eco</span>
+<span class="material-symbols-outlined text-emerald-800">shield_with_heart</span>
+<span class="material-symbols-outlined text-emerald-800">verified</span>
+</div>
+<div class="mt-8 text-emerald-800 font-inter text-xs tracking-tight">
+                    © 2024 NRFSS National Infrastructure. All rights reserved.
+                </div>
+</div>
+</div>
+</footer>
+<script src="./js/auth.js"></script>
+<script src="./js/rides.js"></script>
+</body></html>
