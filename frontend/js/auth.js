@@ -1,45 +1,3 @@
-const API_BASE = "";
-
-const ACCESS_TOKEN_KEY = "nrfss_access_token";
-const USER_KEY = "nrfss_user";
-
-const getAccessToken = () => localStorage.getItem(ACCESS_TOKEN_KEY);
-const setAccessToken = (token) => localStorage.setItem(ACCESS_TOKEN_KEY, token);
-const clearAuth = () => {
-  localStorage.removeItem(ACCESS_TOKEN_KEY);
-  localStorage.removeItem(USER_KEY);
-};
-
-const PRIVATE_PAGES = ["dashboard.html", "post-ride.html", "find-ride.html", "calculator.html", "profile.html", "admin.html"];
-
-async function requestWithAuth(url, options = {}, retried = false) {
-  const token = getAccessToken();
-  const headers = {
-    "Content-Type": "application/json",
-    ...(options.headers || {}),
-  };
-  if (token) headers.Authorization = `Bearer ${token}`;
-
-  const response = await fetch(`${API_BASE}${url}`, {
-    ...options,
-    headers,
-    credentials: "include",
-  });
-
-  if (response.status === 401 && !retried) {
-    const refresh = await fetch(`${API_BASE}/api/auth/refresh`, { method: "POST", credentials: "include" });
-    if (refresh.ok) {
-      const data = await refresh.json();
-      setAccessToken(data.accessToken);
-      return requestWithAuth(url, options, true);
-    }
-    clearAuth();
-    window.location.href = "login.html";
-    throw new Error("Unauthorized");
-  }
-  return response;
-}
-
 const wireRegister = () => {
   const form = document.querySelector("form");
   if (!form) return;
@@ -79,8 +37,8 @@ const wireRegister = () => {
     });
     const data = await response.json();
     if (!response.ok) return alert(data.message || "Registration failed");
-    setAccessToken(data.accessToken);
-    localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+    NRFSS.setAccessToken(data.accessToken);
+    NRFSS.setUser(data.user);
     window.location.href = "dashboard.html";
   });
 };
@@ -100,18 +58,16 @@ const wireLogin = () => {
     });
     const data = await response.json();
     if (!response.ok) return alert(data.message || "Login failed");
-    setAccessToken(data.accessToken);
-    localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+    NRFSS.setAccessToken(data.accessToken);
+    NRFSS.setUser(data.user);
     window.location.href = "dashboard.html";
   });
 };
 
-window.NRFSS = { requestWithAuth, getAccessToken, clearAuth };
-
 document.addEventListener("DOMContentLoaded", () => {
   const page = window.location.pathname.split("/").pop() || "index.html";
-  const token = getAccessToken();
-  if (PRIVATE_PAGES.includes(page) && !token) {
+  const token = NRFSS.getAccessToken();
+  if (NRFSS.PRIVATE_PAGES.includes(page) && !token) {
     window.location.href = "login.html";
     return;
   }
@@ -137,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (text.includes("settings")) el.addEventListener("click", () => (window.location.href = "profile.html"));
     if (text.includes("logout")) {
       el.addEventListener("click", () => {
-        clearAuth();
+        NRFSS.clearAuth();
         window.location.href = "login.html";
       });
     }

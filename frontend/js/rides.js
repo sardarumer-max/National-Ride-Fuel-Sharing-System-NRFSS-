@@ -1,10 +1,3 @@
-const safeJson = async (response) => {
-  const body = await response.json().catch(() => ({}));
-  return body;
-};
-
-const getUser = () => JSON.parse(localStorage.getItem("nrfss_user") || "{}");
-
 const wirePostRide = () => {
   const button = Array.from(document.querySelectorAll("button")).find((b) => b.textContent.includes("Post This Ride") || b.textContent.includes("Publish Route"));
   if (!button) return;
@@ -24,7 +17,7 @@ const wirePostRide = () => {
     };
     if (window.NRFSSRoute?.stops?.length) payload.stops = window.NRFSSRoute.stops;
     const res = await NRFSS.requestWithAuth("/api/rides/post", { method: "POST", body: JSON.stringify(payload) });
-    const data = await safeJson(res);
+    const data = await NRFSS.safeJson(res);
     if (!res.ok) return alert(data.message || "Failed to post ride");
     alert("Ride posted successfully");
     window.location.href = "dashboard.html";
@@ -49,7 +42,7 @@ const renderMatchCards = (rides) => {
   container.querySelectorAll(".request-ride-btn").forEach((button) => {
     button.addEventListener("click", async () => {
       const res = await NRFSS.requestWithAuth(`/api/rides/${button.dataset.rideId}/request`, { method: "POST" });
-      const data = await safeJson(res);
+      const data = await NRFSS.safeJson(res);
       if (!res.ok) return alert(data.message || "Failed to request ride");
       alert("Ride requested successfully");
     });
@@ -68,20 +61,20 @@ const wireFindRide = () => {
       seats: String(Number((inputs[3]?.value || "1").slice(0, 1) || 1)),
     });
     const res = await NRFSS.requestWithAuth(`/api/rides/match?${params.toString()}`);
-    const data = await safeJson(res);
+    const data = await NRFSS.safeJson(res);
     if (!res.ok) return alert(data.message || "Ride search failed");
     renderMatchCards(data.rides || []);
   });
 };
 
 const wireDashboard = () => {
-  const user = getUser();
+  const user = NRFSS.getUser();
   const greeting = Array.from(document.querySelectorAll("h1")).find((h) => h.textContent.includes("Good Morning"));
   if (greeting && user.full_name) greeting.textContent = `Good Morning, ${user.full_name.split(" ")[0]} 👋`;
 
   if (!user.id) return;
   NRFSS.requestWithAuth(`/api/users/${user.id}/dashboard`)
-    .then((res) => safeJson(res))
+    .then((res) => NRFSS.safeJson(res))
     .then((data) => {
       const statCards = document.querySelectorAll("header .glass-card span.text-primary");
       if (statCards[0]) statCards[0].textContent = String(data.stats?.rides_as_driver || 0);
@@ -110,7 +103,7 @@ const pollNotifications = () => {
   setInterval(async () => {
     try {
       const res = await NRFSS.requestWithAuth("/api/notifications");
-      const data = await safeJson(res);
+      const data = await NRFSS.safeJson(res);
       const badge = document.querySelector(".material-symbols-outlined + span");
       if (badge && Array.isArray(data)) {
         const unread = data.filter((n) => !n.is_read).length;
@@ -121,7 +114,7 @@ const pollNotifications = () => {
 };
 
 const wireProfile = async () => {
-  const user = getUser();
+  const user = NRFSS.getUser();
   if (!user.id) return;
   const response = await NRFSS.requestWithAuth(`/api/users/${user.id}`);
   if (response.ok) {
@@ -140,9 +133,9 @@ const wireProfile = async () => {
         method: "PATCH",
         body: JSON.stringify({ full_name: full_name || undefined, city: city || undefined, profession: profession || undefined }),
       });
-      const body = await safeJson(patchResponse);
+      const body = await NRFSS.safeJson(patchResponse);
       if (!patchResponse.ok) return alert(body.message || "Update failed");
-      localStorage.setItem("nrfss_user", JSON.stringify({ ...user, full_name: body.full_name || user.full_name }));
+      NRFSS.setUser({ ...user, full_name: body.full_name || user.full_name });
       alert("Profile updated");
       window.location.reload();
     });
