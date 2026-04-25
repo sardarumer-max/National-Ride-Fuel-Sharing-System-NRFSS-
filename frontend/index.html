@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
+<html class="" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -13,53 +13,36 @@
         theme: {
           extend: {
             "colors": {
-                    "on-secondary-fixed-variant": "#005320",
-                    "tertiary-container": "#ff8b7c",
-                    "surface-container": "#1a221a",
-                    "primary-fixed-dim": "#4ae176",
-                    "on-surface-variant": "#bccbb9",
-                    "on-tertiary-fixed-variant": "#7f2a21",
-                    "surface-bright": "#333b33",
-                    "on-error-container": "#ffdad6",
-                    "on-tertiary": "#60130d",
-                    "error": "#ffb4ab",
-                    "outline": "#869585",
-                    "on-secondary-fixed": "#002109",
-                    "tertiary": "#ffb5ab",
-                    "tertiary-fixed-dim": "#ffb4a9",
-                    "primary": "#4be277",
-                    "secondary": "#62df7d",
-                    "on-primary-fixed-variant": "#005321",
-                    "background": "#0e150e",
-                    "primary-container": "#22c55e",
-                    "surface": "#0e150e",
-                    "surface-dim": "#0e150e",
-                    "surface-container-low": "#161d16",
-                    "on-primary-container": "#004b1e",
-                    "tertiary-fixed": "#ffdad5",
-                    "on-primary-fixed": "#002109",
-                    "secondary-fixed-dim": "#62df7d",
-                    "on-background": "#dce5d9",
-                    "inverse-primary": "#006e2f",
-                    "on-primary": "#003915",
-                    "surface-variant": "#2f372e",
-                    "surface-container-high": "#242c24",
-                    "surface-container-lowest": "#091009",
-                    "primary-fixed": "#6bff8f",
-                    "secondary-container": "#1ca64d",
-                    "inverse-on-surface": "#2a322a",
-                    "inverse-surface": "#dce5d9",
-                    "outline-variant": "#3d4a3d",
-                    "on-surface": "#dce5d9",
-                    "on-error": "#690005",
-                    "on-secondary-container": "#003111",
-                    "surface-container-highest": "#2f372e",
-                    "on-tertiary-fixed": "#410001",
-                    "surface-tint": "#4ae176",
-                    "on-tertiary-container": "#76231b",
-                    "error-container": "#93000a",
-                    "on-secondary": "#003914",
-                    "secondary-fixed": "#7ffc97"
+                    "primary": "#AEB784",
+                    "on-primary": "#F8F3E1",
+                    "primary-container": "#AEB784",
+                    "on-primary-container": "#41431B",
+                    "secondary": "#41431B",
+                    "on-secondary": "#F8F3E1",
+                    "background": "#F8F3E1",
+                    "on-background": "#41431B",
+                    "surface": "#E3DBBB",
+                    "on-surface": "#41431B",
+                    "surface-variant": "#E3DBBB",
+                    "on-surface-variant": "#41431B",
+                    "outline": "#AEB784",
+                    "error": "#d32f2f",
+                    "on-error": "#F8F3E1",
+                    "error-container": "#ffcdd2",
+                    "on-error-container": "#41431B",
+                    "surface-container": "#E3DBBB",
+                    "surface-container-low": "#F8F3E1",
+                    "surface-container-high": "#E3DBBB",
+                    "surface-container-highest": "#AEB784",
+                    "inverse-surface": "#41431B",
+                    "inverse-on-surface": "#F8F3E1",
+                    "inverse-primary": "#AEB784",
+                    "surface-tint": "#AEB784",
+                    "outline-variant": "#E3DBBB",
+                    "tertiary": "#AEB784",
+                    "on-tertiary": "#F8F3E1",
+                    "tertiary-container": "#E3DBBB",
+                    "on-tertiary-container": "#41431B"
             },
             "borderRadius": {
                     "DEFAULT": "0.25rem",
@@ -101,9 +84,9 @@
     </script>
 <style>
         .glass-card {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
-            border: 1px solid #1e3a1e;
+            border: 1px solid #AEB784;
         }
         .grain {
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
@@ -111,14 +94,14 @@
             pointer-events: none;
         }
         .hero-pattern {
-            background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, #1e3a1e 40px, #1e3a1e 41px);
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, #AEB784 40px, #AEB784 41px);
         }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md overflow-x-hidden">
 <div class="fixed inset-0 grain z-0"></div>
 <!-- TopNavBar -->
-<header class="fixed top-0 w-full z-50 border-b border-[#1e3a1e] bg-[#0a0f0a]/80 backdrop-blur-[10px] shadow-[0_0_15px_rgba(34,197,94,0.1)]">
+<header class="fixed top-0 w-full z-50 border-b border-[#AEB784] bg-[#F8F3E1]/80 backdrop-blur-[10px] shadow-[0_0_15px_rgba(174,183,132,0.1)]">
 <nav class="flex justify-between items-center px-8 h-20 w-full max-w-full">
 <div class="flex items-center gap-2 text-xl font-black text-emerald-500">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield</span>
@@ -335,7 +318,7 @@
 </div>
 </section>
 <!-- Footer -->
-<footer class="bg-[#0a0f0a] border-t border-[#1e3a1e]">
+<footer class="bg-[#E3DBBB] border-t border-[#AEB784]">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-12 py-16 w-full max-w-7xl mx-auto">
 <div class="space-y-md">
 <div class="text-emerald-600 font-bold text-xl flex items-center gap-2">
