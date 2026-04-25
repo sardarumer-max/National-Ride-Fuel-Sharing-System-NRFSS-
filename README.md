@@ -6,7 +6,6 @@ This repository is a full-stack ride/fuel sharing application built with:
 
 - `backend/` — Express API server
 - `frontend/` — static HTML/CSS/JS app that calls backend APIs
-- `docs/` — legacy duplicate frontend files; the real app is in `frontend/`
 - `scripts/` — helper utilities and PDF-related scripts
 - `archive/` — legacy or temporary files moved out of the main app flow
 
@@ -19,14 +18,15 @@ This repository is a full-stack ride/fuel sharing application built with:
   - API routes, controllers, middleware, utilities
 - `scripts/`
   - PDF tools and other helper scripts that are not part of the core app
+- `archive/`
+  - Legacy duplicates, temporary files, and old experiments
 
 ## What changed
 
 - Added `frontend/js/utils/api.js` for shared auth and API helper logic
 - Added top-level `README.md` to document the project layout
 - Added `.gitignore` for legacy duplicates and temporary files
-- Copied PDF helper scripts into `scripts/`
-- Created `scripts/` and `archive/` folders for improved organization
+- Moved legacy files into `archive/` and helper scripts into `scripts/`
 
 ## How to run the app
 
@@ -54,6 +54,6 @@ This repository is a full-stack ride/fuel sharing application built with:
 ## Notes
 
 - `frontend/` is the source of truth for the app UI.
-- `docs/` contains duplicate pages and should be treated as legacy copy.
-- `code1.html` through `code9.html` are legacy or temporary files and can be archived.
-- `read_pdf*.js` and `pdf_content.txt` are helper scripts, not part of the main app.
+- `backend/` contains the API server.
+- `scripts/` holds helper utilities not part of the main app.
+- `archive/` contains legacy files and can be ignored or deleted if not needed.
