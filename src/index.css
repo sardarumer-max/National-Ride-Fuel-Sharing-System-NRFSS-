@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-bg-primary text-text-primary font-sans;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-bg-primary; }
+  ::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-border-light; }
+}
+
+@layer components {
+  /* Solid Card (no glass effect) */
+  .glass {
+    @apply bg-bg-secondary border border-border rounded-xl;
+  }
+  .glass-hover {
+    @apply bg-bg-secondary border border-border rounded-xl transition-all duration-300
+           hover:border-border-light hover:bg-bg-card hover:shadow-green-glow;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-green-gradient text-white font-bold px-6 py-3 rounded-xl
+           shadow-green-glow hover:shadow-green-glow-lg transition-all duration-300
+           hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed
+           flex items-center gap-2 justify-center;
+  }
+  .btn-secondary {
+    @apply border border-green-accent text-green-accent font-semibold px-6 py-3 rounded-xl
+           bg-transparent hover:bg-green-accent hover:text-bg-primary transition-all duration-300
+           hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed
+           flex items-center gap-2 justify-center;
+  }
+  .btn-danger {
+    @apply bg-red-600/80 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-lg
+           transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]
+           flex items-center gap-2 justify-center;
+  }
+  .btn-ghost {
+    @apply text-text-dim hover:text-text-primary hover:bg-white/5 px-3 py-2 rounded-lg
+           transition-all duration-200 flex items-center gap-2;
+  }
+
+  /* Form Inputs */
+  .input {
+    @apply w-full bg-bg-card border border-border text-text-primary placeholder-text-dim/50
+           rounded-xl px-4 py-3 outline-none transition-all duration-200
+           focus:border-green-accent focus:ring-2 focus:ring-green-accent/20
+           hover:border-border-light;
+  }
+  .select {
+    @apply input appearance-none cursor-pointer;
+  }
+  .label {
+    @apply block text-sm font-semibold text-text-dim mb-2 tracking-wide;
+  }
+
+  /* Status Badges */
+  .badge { @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-bold; }
+  .badge-green  { @apply badge bg-green-500/15 text-green-400 border border-green-500/20; }
+  .badge-yellow { @apply badge bg-yellow-500/15 text-yellow-400 border border-yellow-500/20; }
+  .badge-red    { @apply badge bg-red-500/15 text-red-400 border border-red-500/20; }
+  .badge-blue   { @apply badge bg-blue-500/15 text-blue-400 border border-blue-500/20; }
+  .badge-gray   { @apply badge bg-white/10 text-white/60 border border-white/10; }
+
+  /* Sidebar */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium
+           text-text-dim hover:text-text-primary hover:bg-white/5 transition-all duration-200;
+  }
+  .sidebar-link.active {
+    @apply bg-green-accent/10 text-green-accent border-l-2 border-green-accent;
+  }
+
+  /* Stat Card */
+  .stat-card {
+    @apply glass p-5 flex items-center gap-4;
+  }
+  .stat-icon {
+    @apply w-12 h-12 rounded-xl bg-green-accent/10 border border-green-accent/20
+           flex items-center justify-center text-green-accent flex-shrink-0;
+  }
+
+  /* Table */
+  .data-table { @apply w-full text-sm; }
+  .data-table thead { @apply border-b border-border; }
+  .data-table th { @apply px-4 py-3 text-left text-xs font-bold text-text-dim uppercase tracking-wider; }
+  .data-table td { @apply px-4 py-4 border-b border-border/50; }
+  .data-table tbody tr { @apply hover:bg-white/[0.02] transition-colors; }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-green-accent to-green-muted;
+  }
+
+  /* Section styles */
+  .section-eyebrow {
+    @apply inline-flex items-center gap-2 text-green-accent text-sm font-bold
+           uppercase tracking-widest mb-4;
+  }
+  .page-title {
+    @apply text-3xl font-black text-text-primary mb-1;
+  }
+  .page-subtitle {
+    @apply text-text-dim text-sm;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  /* Road animation for hero */
+  @keyframes roadMove {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(60px); }
+  }
+  .road-animate { animation: roadMove 2s linear infinite; }
+
+  /* Counter number */
+  .counter { font-variant-numeric: tabular-nums; }
+
+  /* Match bar fill */
+  @keyframes fillBar {
+    from { width: 0; }
+  }
+  .match-fill { animation: fillBar 1s ease forwards; }
+}
+
+/* ── Leaflet Map Dark Theme ───────────────────────────────────────── */
+.leaflet-container {
+  background: #0a0f0a !important;
+  font-family: 'Inter', sans-serif;
+}
+.leaflet-tile {
+  filter: invert(1) hue-rotate(180deg) brightness(0.85) saturate(0.7);
+}
+.leaflet-control-zoom a {
+  background: #0d1a0d !important;
+  color: #86efac !important;
+  border-color: #1e3a1e !important;
+}
+.leaflet-control-zoom a:hover {
+  background: #1e3a1e !important;
+  color: #22c55e !important;
+}
+.leaflet-control-attribution {
+  background: rgba(10,15,10,0.8) !important;
+  color: #4ade80 !important;
+  font-size: 10px !important;
+}
+.leaflet-control-attribution a { color: #22c55e !important; }
+.leaflet-popup-content-wrapper {
+  background: #0d1a0d !important;
+  color: #f0fdf0 !important;
+  border: 1px solid #1e3a1e !important;
+  border-radius: 12px !important;
+}
+.leaflet-popup-tip { background: #0d1a0d !important; }

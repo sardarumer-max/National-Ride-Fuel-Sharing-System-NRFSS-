@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+.npm
+
+# Build output
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Netlify
+.netlify/
+
+# Scripts (contain keys)
+apply_db_fix.cjs
+fix_storage_rls.cjs
+run_fix.cjs
+fix_rls.cjs
+FIX_RUN_IN_SUPABASE.sql
+
+.env
+.env.local
+.env.*
