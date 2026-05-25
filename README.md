@@ -8,7 +8,7 @@
 
 | Field         | Details                        |
 |---------------|-------------------------------|
-| **Group Number** | (As assigned in project proposal spreadsheet) |
+| **Group Number** | 19 |
 | **Member 1**  | Umer Abdullah — Roll No. 24P-0557 |
 | **Member 2**  | Sudais Khan — Roll No. 24P-0572   |
 
